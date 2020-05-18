@@ -1,54 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useReducer } from 'react'
+import { reducer, init } from './Todo.reducer'
 
 function App() {
-  const [todos, setTodos] = useState<string[]>([])
-  const [todoInput, setTodoInput] = useState('')
-  const [editTodoIndex, setEditTodoIndex] = useState(-1)
-
-  useEffect(() => {
-    setTodos([
-      'Set up dev environment',
-      'Code the app',
-      'Deploy to Github Pages',
-    ])
-  }, [])
+  const [{ input, todos, updateIndex }, dispatch] = useReducer(
+    reducer,
+    null,
+    init
+  )
 
   const onChangeInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoInput(event.target.value)
+    dispatch({ type: 'input', payload: event.target.value })
   }
 
   const onClickAddEditHandler = () => {
-    if (todoInput) {
-      setTodos((todos) =>
-        editTodoIndex === -1
-          ? [
-              ...todos.slice(0, editTodoIndex),
-              todoInput,
-              ...todos.slice(editTodoIndex + 1),
-            ]
-          : [...todos, todoInput]
-      )
-      setTodoInput('')
+    if (input) {
+      if (updateIndex === -1) {
+        dispatch({ type: 'create', payload: input })
+      } else {
+        dispatch({ type: 'update', payload: input })
+      }
     }
-    setEditTodoIndex(-1)
   }
 
-  const onClickEditHandler = (todo: string, index: number) => {
-    setTodoInput(todo)
-    setEditTodoIndex(index)
+  const onClickEditHandler = (index: number) => {
+    dispatch({ type: 'updateStart', index })
   }
 
   const onClickDeleteHandler = (index: number) => {
-    setTodos((todos) => [...todos.slice(0, index), ...todos.slice(index + 1)])
+    dispatch({ type: 'delete', index })
   }
 
   return (
     <>
       <h1>App</h1>
       <div>
-        <input type='text' value={todoInput} onChange={onChangeInputHandler} />
+        <input type='text' value={input} onChange={onChangeInputHandler} />
         <button onClick={onClickAddEditHandler}>
-          {editTodoIndex === -1 ? 'edit' : 'add'} todo
+          {updateIndex === -1 ? 'add' : 'update'} todo
         </button>
       </div>
       {todos.length ? (
@@ -58,9 +46,7 @@ function App() {
             {todos.map((todo, i) => (
               <li key={i}>
                 <span style={{ marginRight: 15 }}>{todo}</span>
-                <button onClick={() => onClickEditHandler(todo, i)}>
-                  edit
-                </button>
+                <button onClick={() => onClickEditHandler(i)}>edit</button>
                 <button onClick={() => onClickDeleteHandler(i)}>delete</button>
               </li>
             ))}
