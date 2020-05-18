@@ -1,16 +1,9 @@
 import React from 'react'
-// import AllPosts from './AllPosts'
-import PostInfo from './PostInfo'
 
 function App() {
   console.log('App')
 
-  return (
-    <>
-      {/* <AllPosts /> */}
-      <PostInfo />
-    </>
-  )
+  return <h1>App</h1>
 }
 
 export default App
