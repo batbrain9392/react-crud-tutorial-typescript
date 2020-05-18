@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Post } from '../Post.interface'
+import { Post } from '../interfaces/Post'
 
 const AllPosts = () => {
   console.log('AllPosts')
