@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function App() {
-  const [todos, setTodos] = useState<string[]>([
-    'Set up dev environment',
-    'Code the app',
-    'Deploy to Github Pages',
-  ])
+  const [todos, setTodos] = useState<string[]>([])
   const [todoInput, setTodoInput] = useState('')
   const [editTodoIndex, setEditTodoIndex] = useState(-1)
+
+  useEffect(() => {
+    setTodos([
+      'Set up dev environment',
+      'Code the app',
+      'Deploy to Github Pages',
+    ])
+  }, [])
 
   const onChangeInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoInput(event.target.value)
