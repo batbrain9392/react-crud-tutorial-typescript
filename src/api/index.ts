@@ -1,40 +1,10 @@
 import { useFirestore, useFirestoreCollectionData } from 'reactfire'
-import { Todo, dbTimestamps, TodoRaw, jsTimestamps } from '../interfaces/Todo'
-import { firestore } from 'firebase/app'
+import { Todo, TodoRaw } from '../interfaces/Todo'
+import { useProcessTimestamp, useServerTimestamp } from './helper'
 
 const useTodosCollection = () => {
   const collectionRef = useFirestore().collection('todos')
   return collectionRef
-}
-
-const useServerTimestamp = () => {
-  const serverTimestamp = useFirestore.FieldValue.serverTimestamp()
-  return serverTimestamp
-}
-
-const useConvertTimestampToDate = () => {
-  const { Timestamp } = useFirestore
-  const convertTimestampToDate = (timestamp: firestore.Timestamp) => {
-    return new Timestamp(timestamp.seconds, timestamp.nanoseconds).toDate()
-  }
-  return convertTimestampToDate
-}
-
-const useProcessTimestamp = <
-  T extends Partial<dbTimestamps>,
-  U extends Pick<T, Exclude<keyof T, 'createdAt' | 'updatedAt'>> &
-    Partial<jsTimestamps>
->() => {
-  const convertTimestampToDate = useConvertTimestampToDate()
-  const processTimestamp = ({ createdAt, updatedAt, ...rest }: T) => {
-    let processedItem = {
-      ...rest,
-      createdAt: createdAt && convertTimestampToDate(createdAt),
-      updatedAt: updatedAt && convertTimestampToDate(updatedAt),
-    }
-    return processedItem as U
-  }
-  return processTimestamp
 }
 
 export const useReadTodos = () => {
