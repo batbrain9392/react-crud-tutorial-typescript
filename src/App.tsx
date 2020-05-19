@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { Todos } from './pages'
+import { Todos } from 'pages'
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import { useFirestore, useFirestoreCollectionData } from 'reactfire'
 import { useProcessTimestamp, useServerTimestamp } from './helper'
-import { Todo, TodoRaw } from '../interfaces'
+import { Todo, TodoRaw } from 'interfaces'
 
 const useTodosCollection = () => {
   const collectionRef = useFirestore().collection('todos')

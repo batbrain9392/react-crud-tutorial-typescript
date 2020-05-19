@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import 'index.css'
 import { FirebaseAppProvider } from 'reactfire'
-import App from './App'
-import { firebaseConfig } from './firebaseConfig'
+import App from 'App'
+import { firebaseConfig } from 'firebaseConfig'
 
 const app = (
   <React.StrictMode>

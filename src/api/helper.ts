@@ -1,6 +1,6 @@
 import { useFirestore } from 'reactfire'
 import { firestore } from 'firebase'
-import { dbTimestamps, jsTimestamps } from '../interfaces'
+import { dbTimestamps, jsTimestamps } from 'interfaces'
 
 export const useServerTimestamp = () => {
   const serverTimestamp = useFirestore.FieldValue.serverTimestamp()
