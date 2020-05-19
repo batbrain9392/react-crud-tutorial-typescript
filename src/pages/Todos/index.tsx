@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { TodoForm, TodoList } from 'components'
 import { Todo } from 'interfaces'
-import { useReadTodos, useCreateTodo, useUpdateTodo, useDeleteTodo } from 'api'
+import {
+  useReadTodos,
+  useCreateTodo,
+  useUpdateTodo,
+  useDeleteTodo,
+} from 'api/todo'
 
 const Todos = () => {
   const [editTodo, setEditTodo] = useState<Todo>()
