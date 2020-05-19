@@ -6,7 +6,7 @@ interface Props {
   onDelete: () => void
 }
 
-const Todo = (props: Props) => {
+const TodoItem = (props: Props) => {
   return (
     <li>
       <span style={{ marginRight: 15 }}>{props.value}</span>
@@ -16,4 +16,4 @@ const Todo = (props: Props) => {
   )
 }
 
-export default Todo
+export default TodoItem

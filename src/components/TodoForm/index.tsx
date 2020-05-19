@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 interface Props {
   onSubmit: (value: string) => void
-  isEditing: boolean
-  editValue: string
+  editValue: string | undefined
 }
 
 const TodoForm = (props: Props) => {
@@ -11,11 +10,11 @@ const TodoForm = (props: Props) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (props.isEditing) {
+    if (props.editValue) {
       setInput(props.editValue)
       inputRef.current?.focus()
     }
-  }, [props.isEditing, props.editValue])
+  }, [props.editValue])
 
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -35,7 +34,7 @@ const TodoForm = (props: Props) => {
         autoFocus
         ref={inputRef}
       />
-      <button type='submit'>{props.isEditing ? 'update' : 'add'}</button>
+      <button type='submit'>{props.editValue ? 'update' : 'create'}</button>
     </form>
   )
 }
