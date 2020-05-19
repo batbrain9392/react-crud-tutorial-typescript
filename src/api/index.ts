@@ -1,11 +1,6 @@
 import { useFirestore, useFirestoreCollectionData } from 'reactfire'
-import {
-  Todo,
-  FirebaseTimestamp,
-  dbTimestamps,
-  TodoRaw,
-  jsTimestamps,
-} from '../interfaces/Todo'
+import { Todo, dbTimestamps, TodoRaw, jsTimestamps } from '../interfaces/Todo'
+import { firestore } from 'firebase/app'
 
 const useTodosCollection = () => {
   const collectionRef = useFirestore().collection('todos')
@@ -19,7 +14,7 @@ const useServerTimestamp = () => {
 
 const useConvertTimestampToDate = () => {
   const { Timestamp } = useFirestore
-  const convertTimestampToDate = (timestamp: FirebaseTimestamp) => {
+  const convertTimestampToDate = (timestamp: firestore.Timestamp) => {
     return new Timestamp(timestamp.seconds, timestamp.nanoseconds).toDate()
   }
   return convertTimestampToDate

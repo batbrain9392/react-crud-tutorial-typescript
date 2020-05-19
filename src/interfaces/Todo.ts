@@ -1,11 +1,8 @@
-export type FirebaseTimestamp = {
-  seconds: number
-  nanoseconds: number
-}
+import { firestore } from 'firebase/app'
 
 export type dbTimestamps = {
-  createdAt: FirebaseTimestamp
-  updatedAt: FirebaseTimestamp
+  createdAt: firestore.Timestamp
+  updatedAt: firestore.Timestamp
 }
 
 export type jsTimestamps = {
