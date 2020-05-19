@@ -11,8 +11,8 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "firebase": "^7.14.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^0.0.0-experimental-33c3af284",
+    "react-dom": "^0.0.0-experimental-33c3af284",
     "react-scripts": "3.4.1",
     "reactfire": "^2.0.3",
     "typescript": "~3.7.2"

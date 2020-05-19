@@ -5,11 +5,15 @@ import { FirebaseAppProvider } from 'reactfire'
 import App from './App'
 import { firebaseConfig } from './api/config'
 
-ReactDOM.render(
+const app = (
   <React.StrictMode>
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <App />
     </FirebaseAppProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )
+
+// ReactDOM.render(app, document.getElementById('root'))
+ReactDOM.unstable_createRoot(
+  document.getElementById('root') as HTMLElement
+).render(app)
