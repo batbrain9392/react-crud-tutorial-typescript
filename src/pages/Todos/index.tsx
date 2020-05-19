@@ -19,6 +19,7 @@ const Todos = () => {
   const onSubmitHandler = (name: string) => {
     if (editTodo && editTodo.name !== name) {
       updateTodo(editTodo.id, { name })
+      setEditTodo(undefined)
     } else {
       createTodo(name)
     }
