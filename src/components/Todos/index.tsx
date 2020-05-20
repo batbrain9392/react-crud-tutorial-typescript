@@ -9,21 +9,18 @@ interface Props {
 
 const Todos = (props: Props) => {
   return props.todos.length ? (
-    <>
-      <h3>Todo list</h3>
-      <ol>
-        {props.todos.map((todo, i) => (
-          <Todo
-            key={i}
-            value={todo}
-            onEdit={() => props.onEdit(i)}
-            onDelete={() => props.onDelete(i)}
-          />
-        ))}
-      </ol>
-    </>
+    <ol>
+      {props.todos.map((todo, i) => (
+        <Todo
+          key={i}
+          value={todo}
+          onEdit={() => props.onEdit(i)}
+          onDelete={() => props.onDelete(i)}
+        />
+      ))}
+    </ol>
   ) : (
-    <p>No todos for today</p>
+    <>No todos for today</>
   )
 }
 
