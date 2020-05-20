@@ -37,9 +37,7 @@ const TodoList = (props: Props) => {
       </List>
     </div>
   ) : (
-    <Typography variant='body1' gutterBottom>
-      No todos for today
-    </Typography>
+    <Typography variant='body1'>No todos for today</Typography>
   )
 }
 
