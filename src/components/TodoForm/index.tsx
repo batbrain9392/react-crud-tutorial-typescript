@@ -65,7 +65,6 @@ const TodoForm = (props: Props) => {
       />
       <Divider className={classes.divider} orientation='vertical' />
       <IconButton
-        color='primary'
         className={classes.iconButton}
         aria-label='add button'
         type='submit'>
