@@ -10,21 +10,18 @@ interface Props {
 
 const TodoList = (props: Props) => {
   return props.todos.length ? (
-    <>
-      <h3>Todo list</h3>
-      <ol>
-        {props.todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            value={todo.name}
-            onEdit={() => props.onEdit(todo.id)}
-            onDelete={() => props.onDelete(todo.id)}
-          />
-        ))}
-      </ol>
-    </>
+    <ol>
+      {props.todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          value={todo.name}
+          onEdit={() => props.onEdit(todo.id)}
+          onDelete={() => props.onDelete(todo.id)}
+        />
+      ))}
+    </ol>
   ) : (
-    <p>No todos for today</p>
+    <>No todos for today</>
   )
 }
 
