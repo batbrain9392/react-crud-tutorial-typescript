@@ -1,6 +1,15 @@
 import React from 'react'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import ListItemText from '@material-ui/core/ListItemText'
+import Avatar from '@material-ui/core/Avatar'
+import IconButton from '@material-ui/core/IconButton'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 interface Props {
+  index: number
   value: string
   onEdit: () => void
   onDelete: () => void
@@ -8,11 +17,20 @@ interface Props {
 
 const TodoItem = (props: Props) => {
   return (
-    <li>
-      <span style={{ marginRight: 15 }}>{props.value}</span>
-      <button onClick={() => props.onEdit()}>edit</button>
-      <button onClick={() => props.onDelete()}>delete</button>
-    </li>
+    <ListItem>
+      <ListItemAvatar>
+        <Avatar>{props.index}</Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={props.value} />
+      <ListItemSecondaryAction>
+        <IconButton edge='end' aria-label='edit' onClick={props.onEdit}>
+          <EditIcon />
+        </IconButton>
+        <IconButton edge='end' aria-label='delete' onClick={props.onDelete}>
+          <DeleteIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
   )
 }
 

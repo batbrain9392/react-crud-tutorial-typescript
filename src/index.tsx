@@ -2,11 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'index.css'
 import { FirebaseAppProvider } from 'reactfire'
-import App from 'App'
 import { firebaseConfig } from 'firebaseConfig'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import App from 'App'
 
 const app = (
   <React.StrictMode>
+    <CssBaseline />
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <App />
     </FirebaseAppProvider>
