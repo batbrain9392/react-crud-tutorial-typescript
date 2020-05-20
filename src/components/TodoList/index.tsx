@@ -7,9 +7,6 @@ import List from '@material-ui/core/List'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      marginTop: theme.spacing(4),
-    },
-    listContainer: {
       backgroundColor: theme.palette.background.paper,
     },
   })
@@ -24,26 +21,22 @@ interface Props {
 const TodoList = (props: Props) => {
   const classes = useStyles()
 
-  return (
+  return props.todos.length ? (
     <div className={classes.root}>
-      {props.todos.length ? (
-        <div className={classes.listContainer}>
-          <List>
-            {props.todos.map((todo, i) => (
-              <TodoItem
-                key={todo.id}
-                index={i + 1}
-                value={todo.name}
-                onEdit={() => props.onEdit(todo.id)}
-                onDelete={() => props.onDelete(todo.id)}
-              />
-            ))}
-          </List>
-        </div>
-      ) : (
-        'No todos for today'
-      )}
+      <List>
+        {props.todos.map((todo, i) => (
+          <TodoItem
+            key={todo.id}
+            index={i + 1}
+            value={todo.name}
+            onEdit={() => props.onEdit(todo.id)}
+            onDelete={() => props.onDelete(todo.id)}
+          />
+        ))}
+      </List>
     </div>
+  ) : (
+    <>No todos for today</>
   )
 }
 

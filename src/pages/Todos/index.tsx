@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(4, 0),
+      display: 'grid',
+      gridGap: theme.spacing(3),
     },
   })
 )
@@ -44,9 +46,7 @@ const Todos = () => {
 
   return (
     <Container maxWidth='sm' className={classes.root}>
-      <Typography variant='h2' gutterBottom>
-        Todos
-      </Typography>
+      <Typography variant='h2'>Todos</Typography>
       <TodoForm onSubmit={onSubmitHandler} editValue={editTodo?.name} />
       <TodoList
         todos={todos}
