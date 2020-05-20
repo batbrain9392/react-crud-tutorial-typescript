@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <h1>App</h1>
+      <h1>Todos</h1>
       <TodoForm onSubmit={onSubmitHandler} editValue={todos[editIndex]} />
       <Todos todos={todos} onEdit={onEditHandler} onDelete={onDeleteHandler} />
     </>
