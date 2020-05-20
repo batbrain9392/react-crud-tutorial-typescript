@@ -1,31 +1,40 @@
-import React, { useReducer } from 'react'
-import { reducer, init } from './Todo.reducer'
+import React, { useState } from 'react'
 import Todos from './components/Todos'
 import TodoForm from './components/TodoForm'
 
 function App() {
-  const [{ todos, updateIndex }, dispatch] = useReducer(reducer, null, init)
+  const [todos, setTodos] = useState([
+    'Set up dev environment',
+    'Code the app',
+    'Deploy to Github Pages',
+  ])
+  const [editIndex, setEditIndex] = useState(-1)
 
   const onSubmitHandler = (value: string) => {
-    if (updateIndex > -1) {
-      dispatch({ type: 'update', payload: value })
+    if (editIndex > -1) {
+      setTodos((arr) => [
+        ...arr.slice(0, editIndex),
+        value,
+        ...arr.slice(editIndex + 1),
+      ])
+      setEditIndex(-1)
     } else {
-      dispatch({ type: 'create', payload: value })
+      setTodos((todos) => [...todos, value])
     }
   }
 
   const onEditHandler = (index: number) => {
-    dispatch({ type: 'edit', index })
+    setEditIndex(index)
   }
 
   const onDeleteHandler = (index: number) => {
-    dispatch({ type: 'delete', index })
+    setTodos((arr) => [...arr.slice(0, index), ...arr.slice(index + 1)])
   }
 
   return (
     <>
       <h1>App</h1>
-      <TodoForm onSubmit={onSubmitHandler} editValue={todos[updateIndex]} />
+      <TodoForm onSubmit={onSubmitHandler} editValue={todos[editIndex]} />
       <Todos todos={todos} onEdit={onEditHandler} onDelete={onDeleteHandler} />
     </>
   )
