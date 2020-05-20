@@ -3,6 +3,7 @@ import TodoItem from '../TodoItem'
 import { Todo } from 'types'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,7 +37,9 @@ const TodoList = (props: Props) => {
       </List>
     </div>
   ) : (
-    <>No todos for today</>
+    <Typography variant='body1' gutterBottom>
+      No todos for today
+    </Typography>
   )
 }
 

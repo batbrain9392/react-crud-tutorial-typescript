@@ -3,8 +3,8 @@ import { TodoForm, TodoList } from 'components'
 import { Todo } from 'types'
 import { useReadTodos, useCreateTodo, useUpdateTodo, useDeleteTodo } from 'api'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
