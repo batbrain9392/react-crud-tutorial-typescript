@@ -29,6 +29,7 @@ function App() {
 
   const onDeleteHandler = (index: number) => {
     setTodos((arr) => [...arr.slice(0, index), ...arr.slice(index + 1)])
+    setEditIndex(-1)
   }
 
   return (
