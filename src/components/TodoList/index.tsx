@@ -7,7 +7,7 @@ import List from '@material-ui/core/List'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      margin: theme.spacing(4, 0, 2),
+      marginTop: theme.spacing(4),
     },
     listContainer: {
       backgroundColor: theme.palette.background.paper,
