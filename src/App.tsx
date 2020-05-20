@@ -4,10 +4,10 @@ import Todos from './components/Todos'
 import TodoForm from './components/TodoForm'
 
 function App() {
-  const [{ todos, updateIndex }, dispatch] = useReducer(reducer, null, init)
+  const [{ todos, editIndex }, dispatch] = useReducer(reducer, null, init)
 
   const onSubmitHandler = (value: string) => {
-    if (updateIndex > -1) {
+    if (editIndex > -1) {
       dispatch({ type: 'update', payload: value })
     } else {
       dispatch({ type: 'create', payload: value })
@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <h1>App</h1>
-      <TodoForm onSubmit={onSubmitHandler} editValue={todos[updateIndex]} />
+      <TodoForm onSubmit={onSubmitHandler} editValue={todos[editIndex]} />
       <Todos todos={todos} onEdit={onEditHandler} onDelete={onDeleteHandler} />
     </>
   )

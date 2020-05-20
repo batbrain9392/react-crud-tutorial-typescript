@@ -1,6 +1,6 @@
 type State = {
   todos: string[]
-  updateIndex: number
+  editIndex: number
 }
 type Action =
   | { type: 'create'; payload: string }
@@ -11,7 +11,7 @@ type Action =
 export function init(): State {
   return {
     todos: ['Set up dev environment', 'Code the app', 'Deploy to Github Pages'],
-    updateIndex: -1,
+    editIndex: -1,
   }
 }
 
@@ -25,17 +25,17 @@ export function reducer(state: State, action: Action): State {
     case 'edit':
       return {
         ...state,
-        updateIndex: action.index,
+        editIndex: action.index,
       }
     case 'update':
       return {
         ...state,
         todos: [
-          ...state.todos.slice(0, state.updateIndex),
+          ...state.todos.slice(0, state.editIndex),
           action.payload,
-          ...state.todos.slice(state.updateIndex + 1),
+          ...state.todos.slice(state.editIndex + 1),
         ],
-        updateIndex: -1,
+        editIndex: -1,
       }
     case 'delete':
       return {
@@ -44,7 +44,7 @@ export function reducer(state: State, action: Action): State {
           ...state.todos.slice(0, action.index),
           ...state.todos.slice(action.index + 1),
         ],
-        updateIndex: -1,
+        editIndex: -1,
       }
     default:
       throw new Error('undefined action')
