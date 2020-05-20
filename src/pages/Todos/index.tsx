@@ -4,14 +4,15 @@ import { Todo } from 'types'
 import { useReadTodos, useCreateTodo, useUpdateTodo, useDeleteTodo } from 'api'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      padding: theme.spacing(5, 0),
+    grid: {
       display: 'grid',
       gridGap: theme.spacing(5),
+      margin: theme.spacing(5, 0),
     },
   })
 )
@@ -45,14 +46,16 @@ const Todos = () => {
   }
 
   return (
-    <Container maxWidth='sm' className={classes.root}>
-      <Typography variant='h2'>Todos</Typography>
-      <TodoForm onSubmit={onSubmitHandler} editValue={editTodo?.name} />
-      <TodoList
-        todos={todos}
-        onEdit={onEditHandler}
-        onDelete={onDeleteHandler}
-      />
+    <Container maxWidth='sm'>
+      <Box className={classes.grid}>
+        <Typography variant='h2'>Todos</Typography>
+        <TodoForm onSubmit={onSubmitHandler} editValue={editTodo?.name} />
+        <TodoList
+          todos={todos}
+          onEdit={onEditHandler}
+          onDelete={onDeleteHandler}
+        />
+      </Box>
     </Container>
   )
 }

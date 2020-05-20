@@ -1,27 +1,14 @@
 import React, { Suspense } from 'react'
 import { Todos } from 'pages'
+import { GithubRibbon } from 'components'
 
-const githubRibbon = (
-  <a
-    className='github-fork-ribbon'
-    href='https://github.com/batbrain9392/react-crud-tutorial-typescript'
-    data-ribbon='GitHub'
-    title='GitHub'
-    target='_blank'
-    rel='noreferrer noopener'>
-    GitHub
-  </a>
+const App = () => (
+  <>
+    <GithubRibbon url='https://github.com/batbrain9392/react-crud-tutorial-typescript' />
+    <Suspense fallback='loading...'>
+      <Todos />
+    </Suspense>
+  </>
 )
-
-function App() {
-  return (
-    <>
-      {githubRibbon}
-      <Suspense fallback={'loading...'}>
-        <Todos />
-      </Suspense>
-    </>
-  )
-}
 
 export default App
