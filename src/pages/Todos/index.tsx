@@ -9,9 +9,9 @@ import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      padding: theme.spacing(4, 0),
+      padding: theme.spacing(5, 0),
       display: 'grid',
-      gridGap: theme.spacing(3),
+      gridGap: theme.spacing(5),
     },
   })
 )
