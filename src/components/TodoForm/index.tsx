@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Props {
   onSubmit: (value: string) => void
@@ -7,12 +7,10 @@ interface Props {
 
 const TodoForm = (props: Props) => {
   const [input, setInput] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (props.editValue) {
       setInput(props.editValue)
-      inputRef.current?.focus()
     }
   }, [props.editValue])
 
@@ -32,7 +30,6 @@ const TodoForm = (props: Props) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         autoFocus
-        ref={inputRef}
       />
       <button type='submit'>{props.editValue ? 'update' : 'add'}</button>
     </form>
